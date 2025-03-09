@@ -19,7 +19,7 @@
  * SOFTWARE.
  */
 
-package org.firstinspires.ftc.teamcode.SammyStuff.S_Tests.TestAuton.colorDetection;
+package org.firstinspires.ftc.teamcode.Util.Tests.TestAuton.colorDetection;
 
 import static com.sun.tools.doclint.Entity.delta;
 

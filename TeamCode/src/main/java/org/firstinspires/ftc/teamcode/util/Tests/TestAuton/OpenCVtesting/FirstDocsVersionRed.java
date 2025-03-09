@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.SammyStuff.S_Tests.TestAuton.OpenCVtesting;
+package org.firstinspires.ftc.teamcode.Util.Tests.TestAuton.OpenCVtesting;
 
 import android.util.Size;
 

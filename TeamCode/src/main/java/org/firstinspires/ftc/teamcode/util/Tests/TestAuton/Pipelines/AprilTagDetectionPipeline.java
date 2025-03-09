@@ -19,7 +19,7 @@
  * SOFTWARE.
  */
 
-package org.firstinspires.ftc.teamcode.SammyStuff.S_Tests.TestAuton.Pipelines;
+package org.firstinspires.ftc.teamcode.Util.Tests.TestAuton.Pipelines;
 
 import org.opencv.calib3d.Calib3d;
 import org.opencv.core.CvType;

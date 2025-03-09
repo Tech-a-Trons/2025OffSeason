@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.SammyStuff.S_Tests.TestAuton.colorDetection;
+package org.firstinspires.ftc.teamcode.Util.Tests.TestAuton.colorDetection;
 
 import com.acmerobotics.dashboard.FtcDashboard;
 import com.acmerobotics.dashboard.telemetry.MultipleTelemetry;
