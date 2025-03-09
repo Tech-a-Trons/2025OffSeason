@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.util.subsystems.Mercurial;
+package org.firstinspires.ftc.teamcode.Util.Mercurial;
 
 import androidx.annotation.NonNull;
 
@@ -19,13 +19,13 @@ import dev.frozenmilk.mercurial.subsystems.Subsystem;
 import dev.frozenmilk.mercurial.subsystems.SubsystemObjectCell;
 import kotlin.annotation.MustBeDocumented;
 
-public class SampleClaw implements Subsystem {
+public class specimenClaw implements Subsystem {
     // we are working with java, so we don't have the kotlin object class
     // so we will do the work ourselves
     // this instance line is super important
-    public static final SampleClaw INSTANCE = new SampleClaw();
+    public static final specimenClaw INSTANCE = new specimenClaw();
 
-    private SampleClaw() { }
+    private specimenClaw() { }
 
     // the annotation class we use to attach this subsystem
     @Retention(RetentionPolicy.RUNTIME)
@@ -58,20 +58,21 @@ public class SampleClaw implements Subsystem {
         this.dependency = dependency;
     }
 
-    private final SubsystemObjectCell<Servo> sampleClaw = subsystemCell(() -> FeatureRegistrar.getActiveOpMode().hardwareMap.get(Servo.class, "sampleClaw"));
-    public static Servo getSampleClaw() {
-        return INSTANCE.sampleClaw.get();
+    private final SubsystemObjectCell<Servo> specClaw = subsystemCell(() -> FeatureRegistrar.getActiveOpMode().hardwareMap.get(Servo.class, "specimenclaw"));
+    public static Servo getspecClaw() {
+        return INSTANCE.specClaw.get();
     }
 
     public void preUserInitHook(@NonNull Wrapper opMode) {
         // default command should be set up here, not in the constructor
 
-
         setDefaultCommand(openClaw());
+
     }
     // or here
     @Override
     public void postUserInitHook(@NonNull Wrapper opMode) {
+
 
     }
     // and you might put periodic code in these
@@ -96,12 +97,12 @@ public class SampleClaw implements Subsystem {
     @Override
     public void cleanup(@NonNull Wrapper opMode) {}
 
-   static Servo sampleclaw;
+   static Servo specclaw;
     public static Lambda openClaw(){
-        return  new Lambda("openSampleClaw")
+        return  new Lambda("openSpecimenClaw")
                 .setInit(()-> {
-                    sampleclaw = getSampleClaw();
-                    sampleclaw.setPosition(0.15);
+                    specclaw = getspecClaw();
+                    specclaw.setPosition(0.35);
                 })
                 .setExecute(()->{
 
@@ -121,10 +122,10 @@ public class SampleClaw implements Subsystem {
     }
 
     public static Lambda closeClaw(){
-        return  new Lambda("closeSampleClaw")
+        return  new Lambda("closeSpecimenClaw")
                 .setInit(()-> {
-                    sampleclaw = getSampleClaw();
-                    sampleclaw.setPosition(0.4);
+                    specclaw = getspecClaw();
+                    specclaw.setPosition(0);
                 })
                 .setExecute(()->{
 

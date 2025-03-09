@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.util.subsystems.Mercurial;
+package org.firstinspires.ftc.teamcode.Util.Mercurial;
 
 import androidx.annotation.NonNull;
 
@@ -14,18 +14,19 @@ import dev.frozenmilk.dairy.core.FeatureRegistrar;
 import dev.frozenmilk.dairy.core.dependency.Dependency;
 import dev.frozenmilk.dairy.core.dependency.annotation.SingleAnnotation;
 import dev.frozenmilk.dairy.core.wrapper.Wrapper;
+import dev.frozenmilk.mercurial.Mercurial;
 import dev.frozenmilk.mercurial.commands.Lambda;
 import dev.frozenmilk.mercurial.subsystems.Subsystem;
 import dev.frozenmilk.mercurial.subsystems.SubsystemObjectCell;
 import kotlin.annotation.MustBeDocumented;
 
-public class sampleClawPivot implements Subsystem {
+public class SubSlides implements Subsystem {
     // we are working with java, so we don't have the kotlin object class
     // so we will do the work ourselves
     // this instance line is super important
-    public static final sampleClawPivot INSTANCE = new sampleClawPivot();
+    public static final SubSlides INSTANCE = new SubSlides();
 
-    private sampleClawPivot() {
+    private SubSlides() {
     }
 
     // the annotation class we use to attach this subsystem
@@ -61,20 +62,16 @@ public class sampleClawPivot implements Subsystem {
         this.dependency = dependency;
     }
 
-    private final SubsystemObjectCell<Servo> clawPivot = subsystemCell(() -> FeatureRegistrar.getActiveOpMode().hardwareMap.get(Servo.class, "wrist"));
+    private final SubsystemObjectCell<Servo> SubSLides = subsystemCell(() -> FeatureRegistrar.getActiveOpMode().hardwareMap.get(Servo.class, "szoneSlides"));
 
-    public static Servo getClawPivot() {
-        return INSTANCE.clawPivot.get();
+    public static Servo getSubSlides() {
+        return INSTANCE.SubSLides.get();
     }
 
     public void preUserInitHook(@NonNull Wrapper opMode) {
         // default command should be set up here, not in the constructor
-        setDefaultCommand(PivotStuff());
 
-        clawPivotPos = 0.325;
-
-        GoingClockwise = true;
-
+        setDefaultCommand(Retracted());
     }
 
     // or here
@@ -116,24 +113,13 @@ public class sampleClawPivot implements Subsystem {
     public void cleanup(@NonNull Wrapper opMode) {
     }
 
-    static Servo ClawPivot;
+    static Servo SubSlides;
 
-    static double clawPivotPos;
-    static boolean GoingClockwise;
-
-    public static Lambda PivotStuff() {
-        return new Lambda("PivotStuff")
+    public static Lambda Retracted() {
+        return new Lambda("retracted")
                 .setInit(() -> {
-                    ClawPivot = getClawPivot();
-                   if(GoingClockwise) {
-                       ClawPivot.setPosition(clawPivotPos-0.1625);
-                   }else if (!GoingClockwise){
-                       ClawPivot.setPosition(clawPivotPos+0.1625);
-                   }
-
-                   if (clawPivotPos == 0 || clawPivotPos == 0.65){
-                       GoingClockwise = !GoingClockwise;
-                   }
+                    SubSlides = getSubSlides();
+                    SubSlides.setPosition(-0.48);
                 })
                 .setExecute(() -> {
 
@@ -151,5 +137,47 @@ public class sampleClawPivot implements Subsystem {
 
     }
 
+    public static Lambda Half() {
+        return new Lambda("halfExtend")
+                .setInit(() -> {
+                    SubSlides = getSubSlides();
+                    SubSlides.setPosition(0.15);
+                })
+                .setExecute(() -> {
 
+                })
+                .setEnd(interupted -> {
+
+                })
+                .setFinish(() -> {
+                    return true;
+                })
+                .setInterruptible(false)
+                .setRequirements(INSTANCE)
+                .setRunStates(Wrapper.OpModeState.ACTIVE);
+
+
+    }
+
+    public static Lambda Full() {
+        return new Lambda("fullExtend")
+                .setInit(() -> {
+                    SubSlides = getSubSlides();
+                    SubSlides.setPosition(0.48);
+                })
+                .setExecute(() -> {
+
+                })
+                .setEnd(interupted -> {
+
+                })
+                .setFinish(() -> {
+                    return true;
+                })
+                .setInterruptible(false)
+                .setRequirements(Mercurial.INSTANCE)
+                .setRunStates(Wrapper.OpModeState.ACTIVE);
+
+
+    }
 }

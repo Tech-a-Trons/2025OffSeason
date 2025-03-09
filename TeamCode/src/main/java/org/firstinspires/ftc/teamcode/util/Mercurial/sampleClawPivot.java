@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.util.subsystems.Mercurial;
+package org.firstinspires.ftc.teamcode.Util.Mercurial;
 
 import androidx.annotation.NonNull;
 
@@ -19,20 +19,23 @@ import dev.frozenmilk.mercurial.subsystems.Subsystem;
 import dev.frozenmilk.mercurial.subsystems.SubsystemObjectCell;
 import kotlin.annotation.MustBeDocumented;
 
-public class specimenClaw implements Subsystem {
+public class sampleClawPivot implements Subsystem {
     // we are working with java, so we don't have the kotlin object class
     // so we will do the work ourselves
     // this instance line is super important
-    public static final specimenClaw INSTANCE = new specimenClaw();
+    public static final sampleClawPivot INSTANCE = new sampleClawPivot();
 
-    private specimenClaw() { }
+    private sampleClawPivot() {
+    }
 
     // the annotation class we use to attach this subsystem
     @Retention(RetentionPolicy.RUNTIME)
     @Target(ElementType.TYPE)
     @MustBeDocumented
     @Inherited
-    public @interface Attach{}
+    public @interface Attach {
+    }
+
     // Subsystems use the core Feature system of Dairy to be attached to OpModes
     // we need to set up the dependencies, which at its simplest looks like this
     private Dependency<?> dependency =
@@ -58,88 +61,92 @@ public class specimenClaw implements Subsystem {
         this.dependency = dependency;
     }
 
-    private final SubsystemObjectCell<Servo> specClaw = subsystemCell(() -> FeatureRegistrar.getActiveOpMode().hardwareMap.get(Servo.class, "specimenclaw"));
-    public static Servo getspecClaw() {
-        return INSTANCE.specClaw.get();
+    private final SubsystemObjectCell<Servo> clawPivot = subsystemCell(() -> FeatureRegistrar.getActiveOpMode().hardwareMap.get(Servo.class, "wrist"));
+
+    public static Servo getClawPivot() {
+        return INSTANCE.clawPivot.get();
     }
 
     public void preUserInitHook(@NonNull Wrapper opMode) {
         // default command should be set up here, not in the constructor
+        setDefaultCommand(PivotStuff());
 
-        setDefaultCommand(openClaw());
+        clawPivotPos = 0.325;
+
+        GoingClockwise = true;
 
     }
+
     // or here
     @Override
     public void postUserInitHook(@NonNull Wrapper opMode) {
 
-
     }
+
     // and you might put periodic code in these
     @Override
-    public void preUserInitLoopHook(@NonNull Wrapper opMode) {}
+    public void preUserInitLoopHook(@NonNull Wrapper opMode) {
+    }
+
     @Override
-    public void preUserLoopHook(@NonNull Wrapper opMode) {}
+    public void preUserLoopHook(@NonNull Wrapper opMode) {
+    }
+
     // or these
     @Override
-    public void postUserInitLoopHook(@NonNull Wrapper opMode) {}
+    public void postUserInitLoopHook(@NonNull Wrapper opMode) {
+    }
+
     @Override
-    public void postUserLoopHook(@NonNull Wrapper opMode) {}
+    public void postUserLoopHook(@NonNull Wrapper opMode) {
+    }
 
     // and stopping code can go in here
     @Override
-    public void preUserStopHook(@NonNull Wrapper opMode) {}
+    public void preUserStopHook(@NonNull Wrapper opMode) {
+    }
+
     // or here
     @Override
-    public void postUserStopHook(@NonNull Wrapper opMode) {}
+    public void postUserStopHook(@NonNull Wrapper opMode) {
+    }
 
     // see the feature dev notes on when to use cleanup vs postStop
     @Override
-    public void cleanup(@NonNull Wrapper opMode) {}
-
-   static Servo specclaw;
-    public static Lambda openClaw(){
-        return  new Lambda("openSpecimenClaw")
-                .setInit(()-> {
-                    specclaw = getspecClaw();
-                    specclaw.setPosition(0.35);
-                })
-                .setExecute(()->{
-
-                })
-                .setEnd(interupted-> {
-
-                })
-                .setFinish(()->{
-                    return true;
-                })
-                .setInterruptible(false)
-                .setRequirements(INSTANCE )
-                .setRunStates( Wrapper.OpModeState.ACTIVE);
-
-
-
+    public void cleanup(@NonNull Wrapper opMode) {
     }
 
-    public static Lambda closeClaw(){
-        return  new Lambda("closeSpecimenClaw")
-                .setInit(()-> {
-                    specclaw = getspecClaw();
-                    specclaw.setPosition(0);
+    static Servo ClawPivot;
+
+    static double clawPivotPos;
+    static boolean GoingClockwise;
+
+    public static Lambda PivotStuff() {
+        return new Lambda("PivotStuff")
+                .setInit(() -> {
+                    ClawPivot = getClawPivot();
+                   if(GoingClockwise) {
+                       ClawPivot.setPosition(clawPivotPos-0.1625);
+                   }else if (!GoingClockwise){
+                       ClawPivot.setPosition(clawPivotPos+0.1625);
+                   }
+
+                   if (clawPivotPos == 0 || clawPivotPos == 0.65){
+                       GoingClockwise = !GoingClockwise;
+                   }
                 })
-                .setExecute(()->{
+                .setExecute(() -> {
 
                 })
-                .setEnd(interupted-> {
+                .setEnd(interupted -> {
 
                 })
-                .setFinish(()->{
+                .setFinish(() -> {
                     return true;
                 })
                 .setInterruptible(false)
-                .setRequirements(INSTANCE )
-                .setRunStates( Wrapper.OpModeState.ACTIVE);
-
+                .setRequirements(INSTANCE)
+                .setRunStates(Wrapper.OpModeState.ACTIVE);
 
 
     }

@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.util.subsystems.Mercurial;
+package org.firstinspires.ftc.teamcode.Util.Mercurial;
 
 import androidx.annotation.NonNull;
 
@@ -14,19 +14,18 @@ import dev.frozenmilk.dairy.core.FeatureRegistrar;
 import dev.frozenmilk.dairy.core.dependency.Dependency;
 import dev.frozenmilk.dairy.core.dependency.annotation.SingleAnnotation;
 import dev.frozenmilk.dairy.core.wrapper.Wrapper;
-import dev.frozenmilk.mercurial.Mercurial;
 import dev.frozenmilk.mercurial.commands.Lambda;
 import dev.frozenmilk.mercurial.subsystems.Subsystem;
 import dev.frozenmilk.mercurial.subsystems.SubsystemObjectCell;
 import kotlin.annotation.MustBeDocumented;
 
-public class SubSlides implements Subsystem {
+public class specArm implements Subsystem {
     // we are working with java, so we don't have the kotlin object class
     // so we will do the work ourselves
     // this instance line is super important
-    public static final SubSlides INSTANCE = new SubSlides();
+    public static final specArm INSTANCE = new specArm();
 
-    private SubSlides() {
+    private specArm() {
     }
 
     // the annotation class we use to attach this subsystem
@@ -62,16 +61,30 @@ public class SubSlides implements Subsystem {
         this.dependency = dependency;
     }
 
-    private final SubsystemObjectCell<Servo> SubSLides = subsystemCell(() -> FeatureRegistrar.getActiveOpMode().hardwareMap.get(Servo.class, "szoneSlides"));
+    private final SubsystemObjectCell<Servo> Elbow = subsystemCell(() -> FeatureRegistrar.getActiveOpMode().hardwareMap.get(Servo.class, "specimenelbow"));
 
-    public static Servo getSubSlides() {
-        return INSTANCE.SubSLides.get();
+    public static Servo getElbow() {
+        return INSTANCE.Elbow.get();
+    }
+
+
+    private final SubsystemObjectCell<Servo> Arml = subsystemCell(() -> FeatureRegistrar.getActiveOpMode().hardwareMap.get(Servo.class, "specimenarmleft"));
+
+    public static Servo getArml() {
+        return INSTANCE.Arml.get();
+    }
+
+
+    private final SubsystemObjectCell<Servo>Armr = subsystemCell(() -> FeatureRegistrar.getActiveOpMode().hardwareMap.get(Servo.class, "specimenarmright"));
+
+    public static Servo getarmr() {
+        return INSTANCE.Armr.get();
     }
 
     public void preUserInitHook(@NonNull Wrapper opMode) {
         // default command should be set up here, not in the constructor
 
-        setDefaultCommand(Retracted());
+        setDefaultCommand(PickupPos());
     }
 
     // or here
@@ -110,16 +123,51 @@ public class SubSlides implements Subsystem {
 
     // see the feature dev notes on when to use cleanup vs postStop
     @Override
-    public void cleanup(@NonNull Wrapper opMode) {
+   public void cleanup(@NonNull Wrapper opMode) {
     }
 
-    static Servo SubSlides;
+    static Servo SpecArmLeft;
+    static Servo SpecArmRight;
+    static Servo SpecElbow ;
 
-    public static Lambda Retracted() {
-        return new Lambda("retracted")
+
+    public static Lambda HangPos() {
+        return new Lambda("HangPos")
                 .setInit(() -> {
-                    SubSlides = getSubSlides();
-                    SubSlides.setPosition(-0.48);
+                    SpecArmLeft = getArml();
+                   SpecArmRight = getarmr();
+                    SpecElbow = getElbow();
+
+                    SpecElbow.setPosition(0.09);
+                    SpecArmLeft.setPosition(0.05);
+                    SpecArmRight.setPosition(0.05);
+                })
+                .setExecute(() -> {
+
+                })
+                .setEnd(interupted -> {
+
+                })
+                .setFinish(() -> {
+                    return true;
+                })
+                .setInterruptible(false)
+                .setRequirements(INSTANCE)
+                .setRunStates(Wrapper.OpModeState.ACTIVE);
+
+
+    }
+    public static Lambda PickupPos() {
+        return new Lambda("PickupPos")
+                .setInit(() -> {
+                    SpecArmLeft = getArml();
+                    SpecArmRight = getarmr();
+                    SpecElbow = getElbow();
+
+                    SpecArmLeft.setPosition(0.85);
+                    SpecArmRight.setPosition(0.85);
+                    SpecElbow.setPosition(0.53);
+
                 })
                 .setExecute(() -> {
 
@@ -137,47 +185,5 @@ public class SubSlides implements Subsystem {
 
     }
 
-    public static Lambda Half() {
-        return new Lambda("halfExtend")
-                .setInit(() -> {
-                    SubSlides = getSubSlides();
-                    SubSlides.setPosition(0.15);
-                })
-                .setExecute(() -> {
 
-                })
-                .setEnd(interupted -> {
-
-                })
-                .setFinish(() -> {
-                    return true;
-                })
-                .setInterruptible(false)
-                .setRequirements(INSTANCE)
-                .setRunStates(Wrapper.OpModeState.ACTIVE);
-
-
-    }
-
-    public static Lambda Full() {
-        return new Lambda("fullExtend")
-                .setInit(() -> {
-                    SubSlides = getSubSlides();
-                    SubSlides.setPosition(0.48);
-                })
-                .setExecute(() -> {
-
-                })
-                .setEnd(interupted -> {
-
-                })
-                .setFinish(() -> {
-                    return true;
-                })
-                .setInterruptible(false)
-                .setRequirements(Mercurial.INSTANCE)
-                .setRunStates(Wrapper.OpModeState.ACTIVE);
-
-
-    }
 }

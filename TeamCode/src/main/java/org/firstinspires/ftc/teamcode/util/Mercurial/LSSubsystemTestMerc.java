@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.util.subsystems.Mercurial;
+package org.firstinspires.ftc.teamcode.Util.Mercurial;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
@@ -8,15 +8,21 @@ import dev.frozenmilk.mercurial.Mercurial;
 import dev.frozenmilk.mercurial.bindings.BoundGamepad;
 
 @Mercurial.Attach
-@sampleClawPivot.Attach
-@TeleOp(name = "ClawPivotMerc")
-public class sampleClawPivotTestMerc extends OpMode {
+
+@LS.Attach
+@TeleOp(name = "LsMerc")
+public class LSSubsystemTestMerc extends OpMode {
+    
+
+
+
     @Override
     public void init() {
-        BoundGamepad Gamepad2 = new BoundGamepad(new SDKGamepad(gamepad2));
+        BoundGamepad boundGamepad = new BoundGamepad(new SDKGamepad(gamepad2));
 
+        boundGamepad.dpadUp().onTrue(LS.setTargetPos100());
+        boundGamepad.dpadDown().onTrue(LS.setTargetPos0());
 
-        Gamepad2.y().onTrue(sampleClawPivot.PivotStuff());
     }
 
     @Override
