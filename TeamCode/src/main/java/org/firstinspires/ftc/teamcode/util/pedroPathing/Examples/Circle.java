@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.Util.pedroPathing.Examples;
+package org.firstinspires.ftc.teamcode.Util.pedroPathing.examples;
 
 import com.acmerobotics.dashboard.FtcDashboard;
 import com.acmerobotics.dashboard.config.Config;
@@ -13,7 +13,7 @@ import com.pedropathing.pathgen.PathChain;
 import com.pedropathing.pathgen.Point;
 
 import pedroPathing.constants.FConstants;
-import org.firstinspires.ftc.teamcode.Util.pedroPathing.Constants.LConstants;
+import pedroPathing.constants.LConstants;
 
 /**
  * This is the Circle autonomous OpMode. It runs the robot in a PathChain that's actually not quite

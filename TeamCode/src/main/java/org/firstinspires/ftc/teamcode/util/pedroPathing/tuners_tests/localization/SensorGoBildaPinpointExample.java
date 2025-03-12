@@ -20,7 +20,7 @@
  *   SOFTWARE.
  */
 
-package org.firstinspires.ftc.teamcode.Util.pedroPathing.Tuners;
+package org.firstinspires.ftc.teamcode.Util.pedroPathing.tuners_tests.localization;
 
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
