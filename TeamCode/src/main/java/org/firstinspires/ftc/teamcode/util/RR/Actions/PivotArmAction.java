@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.NiranjanStuff.Actions;
+package org.firstinspires.ftc.teamcode.Util.RR.Actions;
 
 import androidx.annotation.NonNull;
 
@@ -8,48 +8,19 @@ import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 
-public class MainArmAction {
+public class PivotArmAction{
 
-    private static Servo armRight;
-    private static Servo armLeft;
-    public MainArmAction(HardwareMap hardwareMap) {
-        armRight = hardwareMap.get(Servo.class, "spar");
-        armLeft = hardwareMap.get(Servo.class, "spal");
+    private static Servo armElbow;
+    private double targetPosition;
+
+    public PivotArmAction(HardwareMap hardwareMap) {
+        armElbow = hardwareMap.get(Servo.class, "spe");
 
     }
     public static Action pickup() {
         return new Action() {
-            @Override
-            public boolean run(@NonNull TelemetryPacket telemetryPacket) {
-                armLeft.setPosition(0.95); //0.9
-                armRight.setPosition(0.95);
-                return false;
-            }
-        };
-    }
-    public static Action hang() {
-        return new Action() {
             public boolean run(@NonNull TelemetryPacket packet) {
-                armRight.setPosition(0.53);//0.45
-                armLeft.setPosition(0.53); //0.45
-                return false;
-            }
-        };
-    }
-    public static Action ramspechang() {
-        return new Action() {
-            public boolean run(@NonNull TelemetryPacket packet) {
-                armRight.setPosition(0.05);//0.05
-                armLeft.setPosition(0.05); //0.05
-                return false;
-            }
-        };
-    }
-    public static Action start() {
-        return new Action() {
-            public boolean run(@NonNull TelemetryPacket packet) {
-                armRight.setPosition(0.9);
-                armLeft.setPosition(0.9);
+                armElbow.setPosition(0.28);
                 return false;
             }
         };
@@ -57,11 +28,54 @@ public class MainArmAction {
     public static Action reset() {
         return new Action() {
             public boolean run(@NonNull TelemetryPacket packet) {
-                armRight.setPosition(1);
-                armLeft.setPosition(1);
+                armElbow.setPosition(0.4);
+
                 return false;
             }
         };
     }
+    public static Action start() {
+        return new Action() {
+            public boolean run(@NonNull TelemetryPacket packet) {
+                armElbow.setPosition(1);//0.25
+
+                return false;
+            }
+        };
+    }
+    public static Action hang() {
+        return new Action() {
+            public boolean run(@NonNull TelemetryPacket packet) {
+                armElbow.setPosition(0.3);//0.6
+                return false;
+            }
+        };
+    }
+    public static Action ramspechang() {
+        return new Action() {
+            public boolean run(@NonNull TelemetryPacket packet) {
+                armElbow.setPosition(0.15);//0.09
+                return false;
+            }
+        };
+    }
+    public static Action finishhang() {
+        return new Action() {
+            public boolean run(@NonNull TelemetryPacket packet) {
+                armElbow.setPosition(0.59);//0.59
+                return false;
+            }
+        };
+    }
+    public static Action hardhang() {
+        return new Action() {
+            public boolean run(@NonNull TelemetryPacket packet) {
+                armElbow.setPosition(0.65);//0.65
+                return false;
+            }
+        };
+    }
+
+
 
 }

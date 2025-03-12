@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.NiranjanStuff.Actions;
+package org.firstinspires.ftc.teamcode.Util.RR.Actions;
 
 import com.acmerobotics.dashboard.telemetry.TelemetryPacket;
 import com.acmerobotics.roadrunner.Action;
@@ -7,15 +7,18 @@ import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 
-public class SzoneSlide implements Action {
-    private DcMotor SzoneSlide;
+public class PIDAction implements Action {
+
+    private DcMotor lsr;
+    private DcMotor lsl;
     private int targetPosition;
     private PIDController pidController;
     private double p = 0.02, i = 0.0, d = 0.0;  // You can tune these PID values
 
-    public SzoneSlide(DcMotor SzoneSlide, int targetPosition) {
+    public PIDAction(DcMotor lsr, DcMotor lsl, int targetPosition) {
 
-        this.SzoneSlide = SzoneSlide;
+        this.lsr = lsr;
+        this.lsl = lsl;
         this.targetPosition = targetPosition;
         this.pidController = new PIDController(p, i, d);
     }
@@ -24,13 +27,15 @@ public class SzoneSlide implements Action {
     public boolean run(TelemetryPacket packet) {
 
         // Set target position for both motors
-        SzoneSlide.setTargetPosition(targetPosition);
+        lsr.setTargetPosition(targetPosition);
+        lsl.setTargetPosition(targetPosition);
 
         // Set motors to RUN_TO_POSITION mode
-        SzoneSlide.setMode(DcMotorEx.RunMode.RUN_TO_POSITION);
+        lsr.setMode(DcMotorEx.RunMode.RUN_TO_POSITION);
+        lsl.setMode(DcMotorEx.RunMode.RUN_TO_POSITION);
 
         // Get the current position (use average if necessary)
-        double currentPosition = (SzoneSlide.getCurrentPosition());
+        double currentPosition = (lsl.getCurrentPosition() + lsr.getCurrentPosition()) / 2.0;
 
         // Calculate the PID output based on the current position and target
         double pidOutput = pidController.calculate(currentPosition, targetPosition);
@@ -42,11 +47,18 @@ public class SzoneSlide implements Action {
         power = Math.max(-1.0, Math.min(1.0, power));
 
         // Apply the power to both motors
-        SzoneSlide.setPower(power);
+        lsr.setPower(power);
+        lsl.setPower(power);
 
+        // Telemetry for debugging purposes
+        packet.put("PID Output", pidOutput);
+        packet.put("Current Position", currentPosition);
+        packet.put("Target Position", targetPosition);
+        packet.put("Left Slide Power", lsl.getPower());
+        packet.put("Right Slide Power", lsr.getPower());
 
         // Check if both motors have reached the target position
-        if (SzoneSlide.isBusy()) {
+        if (lsl.isBusy() || lsr.isBusy()) {
             return true; // The action is still running
         } else {
 

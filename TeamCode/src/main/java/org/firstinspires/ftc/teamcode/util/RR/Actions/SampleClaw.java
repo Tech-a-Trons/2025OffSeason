@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.NiranjanStuff.Actions;
+package org.firstinspires.ftc.teamcode.Util.RR.Actions;
 
 import androidx.annotation.NonNull;
 
@@ -8,30 +8,30 @@ import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 
-public class Claw {
-    private Servo claw;
+public class SampleClaw {
+    private static Servo SampleClaw;
 
-    public Claw(HardwareMap hardwareMap) {
-        claw = hardwareMap.get(Servo.class, "spc");
+    public SampleClaw(HardwareMap hardwareMap) {
+        SampleClaw = hardwareMap.get(Servo.class, "sac");
 
-        double clawMin = 0;
-        double clawMax = 1;
-        claw.scaleRange(clawMin, clawMax);
+        double clawMin = 0.0;
+        double clawMax = .6;
+        SampleClaw.scaleRange(clawMin, clawMax);
     }
 
     public Action snap() {
         return new Action() {
             public boolean run(@NonNull TelemetryPacket packet) {
-                claw.setPosition(0);
+                SampleClaw.setPosition(0);
                 return false;
             }
         };
     }
 
-    public Action open() {
+    public static Action open() {
         return new Action() {
             public boolean run(@NonNull TelemetryPacket packet) {
-                claw.setPosition(0.25);
+                SampleClaw.setPosition(.6);
                 return false;
             }
         };
