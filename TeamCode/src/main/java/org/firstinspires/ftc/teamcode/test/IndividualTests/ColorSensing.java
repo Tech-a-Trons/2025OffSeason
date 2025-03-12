@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.GameCode.TeleOp.IndividualTests;
+package org.firstinspires.ftc.teamcode.test.IndividualTests;
 
 import android.graphics.Color;
 import android.util.Size;

@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.GameCode.TeleOp.IndividualTests;
+package org.firstinspires.ftc.teamcode.test.IndividualTests;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.hardware.Gamepad;

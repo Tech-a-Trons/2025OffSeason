@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.GameCode.auton;
+package org.firstinspires.ftc.teamcode.test;
 
 import com.acmerobotics.dashboard.FtcDashboard;
 import com.acmerobotics.dashboard.telemetry.MultipleTelemetry;
