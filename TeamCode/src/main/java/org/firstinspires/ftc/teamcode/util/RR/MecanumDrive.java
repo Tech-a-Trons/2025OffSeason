@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.Util.RR;
+package org.firstinspires.ftc.teamcode.util.RR;
 
 import androidx.annotation.NonNull;
 
@@ -41,10 +41,10 @@ import com.qualcomm.robotcore.hardware.VoltageSensor;
 
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 import org.firstinspires.ftc.robotcore.external.navigation.YawPitchRollAngles;
-import org.firstinspires.ftc.teamcode.Util.RR.messages.DriveCommandMessage;
-import org.firstinspires.ftc.teamcode.Util.RR.messages.MecanumCommandMessage;
-import org.firstinspires.ftc.teamcode.Util.RR.messages.MecanumLocalizerInputsMessage;
-import org.firstinspires.ftc.teamcode.Util.RR.messages.PoseMessage;
+import org.firstinspires.ftc.teamcode.util.RR.messages.DriveCommandMessage;
+import org.firstinspires.ftc.teamcode.util.RR.messages.MecanumCommandMessage;
+import org.firstinspires.ftc.teamcode.util.RR.messages.MecanumLocalizerInputsMessage;
+import org.firstinspires.ftc.teamcode.util.RR.messages.PoseMessage;
 
 import java.lang.Math;
 import java.util.Arrays;

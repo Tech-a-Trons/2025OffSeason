@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.Util.FTCLIB;
+package org.firstinspires.ftc.teamcode.util.FTCLIB;
 
 import com.arcrobotics.ftclib.command.SubsystemBase;
 import com.qualcomm.robotcore.hardware.HardwareMap;

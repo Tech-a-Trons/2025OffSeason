@@ -1,14 +1,14 @@
-package org.firstinspires.ftc.teamcode.Util.RR.tuning;
+package org.firstinspires.ftc.teamcode.util.RR.tuning;
 
 import com.acmerobotics.roadrunner.Pose2d;
 import com.acmerobotics.roadrunner.Vector2d;
 import com.acmerobotics.roadrunner.ftc.Actions;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
-import org.firstinspires.ftc.teamcode.Util.RR.MecanumDrive;
-import org.firstinspires.ftc.teamcode.Util.RR.PinpointDrive;
-import org.firstinspires.ftc.teamcode.Util.RR.SparkFunOTOSDrive;
-import org.firstinspires.ftc.teamcode.Util.RR.TankDrive;
+import org.firstinspires.ftc.teamcode.util.RR.MecanumDrive;
+import org.firstinspires.ftc.teamcode.util.RR.PinpointDrive;
+import org.firstinspires.ftc.teamcode.util.RR.SparkFunOTOSDrive;
+import org.firstinspires.ftc.teamcode.util.RR.TankDrive;
 
 
 public final class SplineTest extends LinearOpMode {

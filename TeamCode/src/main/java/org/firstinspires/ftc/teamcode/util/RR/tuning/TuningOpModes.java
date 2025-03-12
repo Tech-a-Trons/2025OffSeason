@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.Util.RR.tuning;
+package org.firstinspires.ftc.teamcode.util.RR.tuning;
 
 import com.acmerobotics.dashboard.FtcDashboard;
 import com.acmerobotics.dashboard.config.reflection.ReflectionConfig;
@@ -12,12 +12,12 @@ import com.qualcomm.robotcore.eventloop.opmode.OpModeRegistrar;
 
 import org.firstinspires.ftc.robotcore.internal.opmode.OpModeMeta;
 import org.firstinspires.ftc.teamcode.*;
-import org.firstinspires.ftc.teamcode.Util.RR.MecanumDrive;
-import org.firstinspires.ftc.teamcode.Util.RR.PinpointDrive;
-import org.firstinspires.ftc.teamcode.Util.RR.SparkFunOTOSDrive;
-import org.firstinspires.ftc.teamcode.Util.RR.TankDrive;
-import org.firstinspires.ftc.teamcode.Util.RR.ThreeDeadWheelLocalizer;
-import org.firstinspires.ftc.teamcode.Util.RR.TwoDeadWheelLocalizer;
+import org.firstinspires.ftc.teamcode.util.RR.MecanumDrive;
+import org.firstinspires.ftc.teamcode.util.RR.PinpointDrive;
+import org.firstinspires.ftc.teamcode.util.RR.SparkFunOTOSDrive;
+import org.firstinspires.ftc.teamcode.util.RR.TankDrive;
+import org.firstinspires.ftc.teamcode.util.RR.ThreeDeadWheelLocalizer;
+import org.firstinspires.ftc.teamcode.util.RR.TwoDeadWheelLocalizer;
 
 import java.util.ArrayList;
 import java.util.Arrays;

@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.Util.RR;
+package org.firstinspires.ftc.teamcode.util.RR;
 
 import com.acmerobotics.dashboard.config.Config;
 import com.acmerobotics.roadrunner.DualNum;
@@ -15,7 +15,7 @@ import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
-import org.firstinspires.ftc.teamcode.Util.RR.messages.ThreeDeadWheelInputsMessage;
+import org.firstinspires.ftc.teamcode.util.RR.messages.ThreeDeadWheelInputsMessage;
 
 @Config
 public final class ThreeDeadWheelLocalizer implements Localizer {
