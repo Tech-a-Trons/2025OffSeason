@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.NiranjanStuff.tuning;
+package org.firstinspires.ftc.teamcode.Util.RR;
 
 
 
@@ -16,7 +16,7 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 import org.firstinspires.ftc.robotcore.external.navigation.Pose2D;
-import org.firstinspires.ftc.teamcode.NiranjanStuff.messages.PoseMessage;
+import org.firstinspires.ftc.teamcode.Util.RR.messages.PoseMessage;
 
 /**
  * Experimental extension of MecanumDrive that uses the Gobilda Pinpoint sensor for localization.
@@ -63,7 +63,7 @@ public class PinpointDrive extends MecanumDrive {
         you move the robot to the left.
          */
         public GoBildaPinpointDriver.EncoderDirection xDirection = GoBildaPinpointDriver.EncoderDirection.FORWARD;
-        public GoBildaPinpointDriver.EncoderDirection yDirection = GoBildaPinpointDriver.EncoderDirection.REVERSED;
+        public GoBildaPinpointDriver.EncoderDirection yDirection = GoBildaPinpointDriver.EncoderDirection.FORWARD;
 
         /*
         Use the pinpoint IMU for tuning

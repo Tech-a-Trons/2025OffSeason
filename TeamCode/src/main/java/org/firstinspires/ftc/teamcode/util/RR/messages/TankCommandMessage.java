@@ -1,7 +1,4 @@
-package org.firstinspires.ftc.teamcode.NiranjanStuff.messages;
-
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
-
+package org.firstinspires.ftc.teamcode.Util.RR.messages;
 
 public final class TankCommandMessage {
     public long timestamp;
