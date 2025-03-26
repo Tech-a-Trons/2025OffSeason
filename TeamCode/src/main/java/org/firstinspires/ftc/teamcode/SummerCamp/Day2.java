@@ -28,34 +28,43 @@ public class Day2 extends OpMode {
     @Override
     public void loop() {
 
+        //Before this explain button in slides
+
         //setting speed to full power for 1 second
-        if(timer.milliseconds()<=1000) {
-            motor.setPower(1);
-        } else if(timer.milliseconds()>=1000) {
-            motor.setPower(0);
-        } else if(timer.milliseconds()>=2000){
-            timer.reset();
-            //run to a set position
-            motor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-            motor.setTargetPosition(1000);
-            motor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        if (gamepad1.a) {
+            if (timer.milliseconds() <= 1000) {
+                motor.setPower(1);
+            } else if (timer.milliseconds() >= 1000) {
+                motor.setPower(0);
+            } else if (timer.milliseconds() >= 2000) {
+                timer.reset();
+                //run to a set position
+                motor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+                motor.setTargetPosition(1000);
+                motor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            }
         }
         //tell how u got to say the pos before saying "RUN_TO_POSITION"
 
         //Explain getCurrentPosition
-        motor.getCurrentPosition();
+        if (gamepad1.x) {
+            motor.getCurrentPosition();
+        }
 
-        if (motor.getCurrentPosition() < 500) {
-            motor.setPower(0);
-        } else if (motor.getCurrentPosition() == 0) {
-            motor.setPower(0.1);
-        } else {
-            motor.setPower(0.05);
+        if (gamepad1.b) {
+            if (motor.getCurrentPosition() < 500) {
+                motor.setPower(0);
+            } else if (motor.getCurrentPosition() == 0) {
+                motor.setPower(0.1);
+            } else {
+                motor.setPower(0.05);
+            }
         }
 
         //Explain how this is simpler
-        motor.setTargetPosition(500);
-        motor.setPower(0.1);
+        if (gamepad1.y)
+            motor.setTargetPosition(500);
+            motor.setPower(0.1);
         //break maybe?
 
         //Explain Servos
