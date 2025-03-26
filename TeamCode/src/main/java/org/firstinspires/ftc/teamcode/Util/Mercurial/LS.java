@@ -222,6 +222,41 @@ public class LS implements Subsystem {
     }
 
 
+    public static Lambda setTargetPos(int targetPos){
+        return  new Lambda("setTargetPos0")
+                .setInit(()-> {
+                    target = targetPos;
+                    lsl1 = getlsr();
+                    lsr1 = getlsr();
+                })
+                .setExecute(()->{
+                    controller.setPID(p, i, d);
+                    //  double BothLSCurrentPos = lsl.getCurrentPosition()*0.5 + lsr.getCurrentPosition()*0.5;
+//            double lsAveragePos = BothLSCurrentPos;
+
+                    double lsAveragePos = lsl1.getCurrentPosition();
+          /* the method for this is that the position for lsl and lsr is generally the the same. I have included a
+          commented out code which gets both, I just didnt want it to be too complex
+           */
+                    double pid = controller.calculate(lsAveragePos,target);
+                    double ff = f;
+                    double power = pid + ff;
+
+                    lsl1.setPower(power);
+                    lsr1.setPower(power);})
+                .setEnd(interupted -> {
+
+                })
+                .setFinish(()-> {
+                    return true;
+                })
+                .setInterruptible(true)
+                .setRequirements(INSTANCE )
+                .setRunStates( Wrapper.OpModeState.ACTIVE);
+
+
+    }
+
 
 
 
