@@ -3,7 +3,9 @@ package org.firstinspires.ftc.teamcode.test.IndividualTests;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
-import IntoTheDeep.SammyStuff.GameCode.subsystems.FTCLIB.LinearSlides;
+import org.firstinspires.ftc.teamcode.Util.FTCLIB.LinearSlides;
+
+
 @TeleOp(name = "lsSubsystemTest")
 public class LSsubsystemTest extends LinearOpMode {
 

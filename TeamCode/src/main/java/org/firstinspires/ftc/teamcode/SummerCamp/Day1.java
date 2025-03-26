@@ -32,12 +32,11 @@ public class Day1 extends OpMode {
             motor.setPower(0);
         }else if(timer.milliseconds()>=2000){
             timer.reset();
-            //run to a set position
-            motor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-            motor.setTargetPosition(1000);
-            motor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
 
         }
+
+        //next, code run to position
 
 
 
