@@ -26,9 +26,11 @@ public class ButtonTest extends OpMode {
     public void loop() {
 
         if (gamepad1.dpad_down) {
+            motor.setTargetPosition(500);
             motor.setPower(-0.05);
         }
         if (gamepad1.dpad_up) {
+            motor.setTargetPosition(500);
             motor.setPower(0.05);
         }
     }

@@ -7,8 +7,8 @@ import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 
-@TeleOp (name = "day2")
-public class Day2 extends OpMode {
+@TeleOp (name = "Stop")
+public class StopTheRobot extends OpMode {
     //intro to ftc Java will prob be on slides
 
     ElapsedTime timer;
@@ -62,14 +62,10 @@ public class Day2 extends OpMode {
         }
 
         //Explain how this is simpler
-        if (gamepad1.y)
+        if (gamepad1.y) {
             motor.setTargetPosition(500);
             motor.setPower(0.1);
-        //break maybe?
-
-        //Explain Servos
-        servo.setPosition(1);
-
+        }
 
     }
 }
