@@ -4,7 +4,7 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.Servo;
 
-@TeleOp (name = "Servos")
+@TeleOp (name = "ServosD2")
 public class Servos extends OpMode {
 
     Servo servo;
@@ -24,7 +24,5 @@ public class Servos extends OpMode {
         if (gamepad1.a) {
             servo.setPosition(0);
         }
-
-
     }
 }

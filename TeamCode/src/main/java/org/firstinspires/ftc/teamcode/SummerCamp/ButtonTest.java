@@ -6,7 +6,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-@TeleOp (name = "BUTTONS")
+@TeleOp (name = "BUTTONSD2")
 public class ButtonTest extends OpMode {
     //intro to ftc Java will prob be on slides
     //calling our DcMotor object

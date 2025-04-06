@@ -7,7 +7,7 @@ import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 
-@TeleOp (name = "Stop")
+@TeleOp (name = "StopD2")
 public class StopTheRobot extends OpMode {
     //intro to ftc Java will prob be on slides
 
