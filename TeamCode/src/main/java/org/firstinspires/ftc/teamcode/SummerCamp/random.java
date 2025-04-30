@@ -2,21 +2,23 @@ package org.firstinspires.ftc.teamcode.SummerCamp;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-import com.qualcomm.robotcore.hardware.Servo;
+import com.qualcomm.robotcore.hardware.DcMotor;
 
-@TeleOp (name = "ServosD2")
-public class Servos extends OpMode {
-    Servo servo;
+@TeleOp (name = "random")
+public class random extends OpMode {
+
+    DcMotor motor;
 
     @Override
     public void init() {
-        servo = hardwareMap.get(Servo.class,"Servo");
+        motor = hardwareMap.get(DcMotor.class,"motor");
     }
 
     @Override
     public void loop() {
-        if (gamepad1.b) {
-            servo.setPosition(1);
+
+        if (gamepad1.a) {
+            motor.setPower(0.05);
         }
     }
 }
