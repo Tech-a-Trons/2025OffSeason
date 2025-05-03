@@ -12,10 +12,10 @@ public class Drivetrain extends LinearOpMode {
 
     @Override
     public void runOpMode() throws InterruptedException {
-        motor = hardwareMap.get(DcMotor.class, "motor");
-        motor2 = hardwareMap.get(DcMotor.class, "motor2");
-        motor3 = hardwareMap.get(DcMotor.class, "motor3");
-        motor4 = hardwareMap.get(DcMotor.class, "motor4");
+        motor = hardwareMap.get(DcMotor.class, "fl");
+        motor2 = hardwareMap.get(DcMotor.class, "fr");
+        motor3 = hardwareMap.get(DcMotor.class, "bl");
+        motor4 = hardwareMap.get(DcMotor.class, "br");
 
         motor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         motor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
@@ -35,6 +35,64 @@ public class Drivetrain extends LinearOpMode {
 
         waitForStart();
 
+        motor.setTargetPosition(1000);
+        motor2.setTargetPosition(1000);
+        motor3.setTargetPosition(1000);
+        motor4.setTargetPosition(1000);
 
+        motor.setPower(0.05);
+        motor2.setPower(0.05);
+        motor3.setPower(0.05);
+        motor4.setPower(0.05);
+
+        motor.setTargetPosition(0);
+        motor2.setTargetPosition(0);
+        motor3.setTargetPosition(0);
+        motor4.setTargetPosition(0);
+
+        motor.setPower(0.05);
+        motor2.setPower(0.05);
+        motor3.setPower(0.05);
+        motor4.setPower(0.05);
+
+        motor.setTargetPosition(1000);
+        motor4.setTargetPosition(1000);
+        motor2.setTargetPosition(1000);
+        motor3.setTargetPosition(1000);
+
+        motor.setPower(0.05);
+        motor2.setPower(-0.05);
+        motor3.setPower(-0.05);
+        motor4.setPower(0.05);
+
+        motor.setTargetPosition(0);
+        motor4.setTargetPosition(0);
+        motor2.setTargetPosition(0);
+        motor3.setTargetPosition(0);
+
+        motor.setPower(-0.05);
+        motor2.setPower(0.05);
+        motor3.setPower(0.05);
+        motor4.setPower(-0.05);
+
+        motor.setTargetPosition(500);
+        motor4.setTargetPosition(500);
+        motor2.setTargetPosition(500);
+        motor3.setTargetPosition(500);
+
+        motor.setPower(-0.05);
+        motor2.setPower(0.05);
+        motor3.setPower(-0.05);
+        motor4.setPower(0.05);
+
+        motor.setTargetPosition(0);
+        motor4.setTargetPosition(0);
+        motor2.setTargetPosition(0);
+        motor3.setTargetPosition(0);
+
+        motor.setPower(0.05);
+        motor2.setPower(-0.05);
+        motor3.setPower(0.05);
+        motor4.setPower(-0.05);
     }
 }
