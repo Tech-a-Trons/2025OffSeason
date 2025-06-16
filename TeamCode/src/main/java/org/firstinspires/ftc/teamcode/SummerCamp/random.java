@@ -14,6 +14,6 @@ public class random extends LinearOpMode {
     public void runOpMode() throws InterruptedException {
         motor = hardwareMap.get(DcMotor.class,"motor");
         waitForStart();
-        motor.setPower(1);
+        motor.setPower(-0.1);
     }
 }
